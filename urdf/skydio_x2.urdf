@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+
+<robot name="skydio_x2">
+    <mujoco>
+        <compiler balanceinertia="true" discardvisual="false" fusestatic="false"/>
+    </mujoco>
+
+    <link name="world"/>
+    <joint name="floating_base_joint" type="floating">
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <parent link="world"/>
+        <child link="x2"/>
+    </joint>
+
+    <link name="x2">
+        <inertial>
+            <origin rpy="0 0 0" xyz="0 0 0.1"/>
+            <mass value="0"/>
+            <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+        </inertial>
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <cylinder radius=".06" length=".025"/>
+            </geometry>
+        </visual>
+
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <cylinder radius=".06" length=".025"/>
+            </geometry>
+        </collision>
+
+    </link>
+
+    <link name="rotor1">
+        <inertial>
+            <mass value="0.25"/>
+            <inertia ixx="0.00085" ixy="0" ixz="0" iyy="0.00085" iyz="0" izz="0.00169"/>
+        </inertial>
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <cylinder radius=".13" length=".005"/>
+            </geometry>
+        </visual>
+    </link>
+    <link name="rotor2">
+        <inertial>
+            <mass value="0.25"/>
+            <inertia ixx="0.00085" ixy="0" ixz="0" iyy="0.00085" iyz="0" izz="0.00169"/>
+        </inertial>
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <cylinder radius=".13" length=".005"/>
+            </geometry>
+        </visual>
+    </link>
+    <link name="rotor3">
+        <inertial>
+            <mass value="0.25"/>
+            <inertia ixx="0.00085" ixy="0" ixz="0" iyy="0.00085" iyz="0" izz="0.00169"/>
+        </inertial>
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <cylinder radius=".13" length=".005"/>
+            </geometry>
+        </visual>
+    </link>
+    <link name="rotor4">
+        <inertial>
+            <mass value="0.25"/>
+            <inertia ixx="0.00085" ixy="0" ixz="0" iyy="0.00085" iyz="0" izz="0.00169"/>
+        </inertial>
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <cylinder radius=".13" length=".005"/>
+            </geometry>
+        </visual>
+    </link>
+    <link name="center_of_mass_link">
+        <inertial>
+            <origin rpy="0 0 0" xyz="0 0 0.02"/>
+            <mass value="0.325"/>
+            <inertia ixx="0.00013" ixy="0" ixz="0" iyy="0.00169" iyz="0" izz="0.001768"/>
+        </inertial>
+    </link>
+
+    <joint name="center_of_mass_joint" type="fixed">
+        <parent link="x2"/>
+        <child link="center_of_mass_link"/>
+    </joint>
+    <joint name="prop0_joint" type="fixed">
+        <parent link="x2"/>
+        <child link="rotor1"/>
+        <origin rpy="0 0 0" xyz="-0.14 -0.18 0.05"/>
+    </joint>
+    <joint name="prop1_joint" type="fixed">
+        <parent link="x2"/>
+        <child link="rotor2"/>
+        <origin rpy="0 0 0" xyz="-0.14 0.18 0.05"/>
+    </joint>
+    <joint name="prop2_joint" type="fixed">
+        <parent link="x2"/>
+        <child link="rotor3"/>
+        <origin rpy="0 0 0" xyz="0.14 0.18 0.08"/>
+    </joint>
+    <joint name="prop3_joint" type="fixed">
+        <parent link="x2"/>
+        <child link="rotor4"/>
+        <origin rpy="0 0 0" xyz="0.14 -0.18 0.08"/>
+    </joint>
+
+</robot>
