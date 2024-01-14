@@ -36,4 +36,6 @@ qfrc_u = selector @ np.array([tau1, tau2, tau3, tau4])
 
 ```
 
+Derivation of the selector matrix is described in this [notebook](selector_derivation.ipynb).
+
 Notice, that much attention is put towards dynymics matching the MuJoCo model, collisions are not considered and will be welcomed as a contribution.
